@@ -9,4 +9,7 @@ use App\Models\User;
 class newController extends Controller
 {
     //
+    public function form(){
+        return view('new.form', ['newform' => $newform]);
+    }
 }
