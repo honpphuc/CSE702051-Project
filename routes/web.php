@@ -17,4 +17,4 @@ use App\Http\Controllers\newController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/new', [newController::class, 'form'])->name('new.form');
+Route::get('/new.form', [newController::class, 'form'])->name('new.form');
