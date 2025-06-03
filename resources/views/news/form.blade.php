@@ -13,6 +13,7 @@
         <p>Đăng kí tài khoản để sử dụng phần mềm.</p>
     </header>
     <form action="">
+        @csrf
         <div class="form-group">
             <div class="form-label-group">
                 <input type="text" id="username" name="username" class="form-control" placeholder="Họ và tên" required>
