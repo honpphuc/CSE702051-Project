@@ -10,6 +10,8 @@ class newController extends Controller
 {
     //
     public function form(){
-        return view('new.form');
+        $news = News::all();
+        $users = User::all();
+        return view('new.form', ['news' => $news, 'users' => $users]);
     }
 }
