@@ -30,9 +30,9 @@
                     </li>
                 </ul>
                 </div>
-                <div class="navbar-right">
+                <!-- <div class="navbar-right">
                     <a href="{{ route ('new.login') }}" class="btn btn-primary">Đăng nhập</a>
-                    <a href="{{ route ('new.form') }}" class="btn btn-secondary">Đăng ký</a>
+                    <a href="{{ route ('new.form') }}" class="btn btn-secondary">Đăng ký</a> -->
                 </div>
             </nav>
         </div>
