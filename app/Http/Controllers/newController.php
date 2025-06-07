@@ -14,4 +14,12 @@ class newController extends Controller
         $users = User::all();
         return view('new.form', ['news' => $news, 'users' => $users]);
     }
+    public function login(Request $request){ //Phan dang nhap
+        $credentials = $request->only('email', 'password');
+        if (auth()->attempt($credentials)) {
+            return redirect()->route('new.form')->with('success', 'Login successful');
+        } else {
+            return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
+        }
+    }
 }

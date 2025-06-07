@@ -30,7 +30,10 @@
                     </li>
                 </ul>
                 </div>
-                
+                <div class="navbar-right">
+                        <a href="{{ route('login') }}">ĐĂNG NHẬP</a>
+                        <a href="{{ route('register') }}">ĐĂNG KÍ</a>
+                </div>
             </nav>
         </div>
     </header>
