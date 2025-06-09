@@ -2,7 +2,7 @@
   <div class="container mx-auto px-4 py-3">
     <div class="flex items-center justify-between">
       <div class="flex items-center">
-        <a href="#" class="text-2xl font-['Pacifico'] text-primary">SanBong</a>
+        <a href="#" class="text-2xl font-['Pacifico'] text-primary">DatSanBong</a>
       </div>
       <nav class="hidden md:flex items-center space-x-8">
         <a href="#" class="text-gray-800 font-medium hover:text-primary transition">Trang chủ</a>

@@ -39,4 +39,8 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('form');
 })->name('register');
+
+Route::get('/main', function (){
+    return view('home');
+})->name('main');
 require __DIR__.'/auth.php';
