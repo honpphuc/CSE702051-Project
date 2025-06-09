@@ -1,13 +1,15 @@
-<section class="hero-section py-20">
-    <div class="container mx-auto px-4 w-full">
-        <div class="max-w-2xl text-black mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Chào mừng đến với DatSanBong.vn</h1>
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Đặt sân bóng đá trực tuyến dễ dàng</h1>
-            <p class="text-lg mb-8">Tìm và đặt sân bóng đá gần bạn chỉ với vài cú nhấp chuột. Tiết kiệm thời gian và tận hưởng trận đấu của bạn.</p>
-            <a href="#booking" class="bg-primary text-white py-3 px-6 !rounded-button text-lg font-medium hover:bg-opacity-90 transition inline-block whitespace-nowrap">Đặt sân ngay</a>
+<section class="hero-section py-20 relative">
+        <div style="background-image: url('https://readdy.ai/api/search-image?query=Professional%20soccer%20field%20with%20stadium%20lights%20at%20dusk%2C%20beautiful%20green%20grass%2C%20modern%20sports%20facility%2C%20empty%20field%20ready%20for%20game%2C%20dramatic%20lighting%2C%20high%20quality%20professional%20football%20pitch%2C%20wide%20angle%20view%2C%20atmospheric%20scene&width=1920&height=800&seq=1&orientation=landscape');" class="absolute inset-0 bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="container mx-auto px-4 w-full relative z-10">
+            <div class="max-w-2xl text-white mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Chào mừng đến với DatSanBong.vn</h1>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Đặt sân bóng đá trực tuyến dễ dàng</h2>
+                <p class="text-lg mb-8">Tìm và đặt sân bóng đá gần bạn chỉ với vài cú nhấp chuột. Tiết kiệm thời gian và tận hưởng trận đấu của bạn.</p>
+                <a href="#booking" class="bg-primary text-white py-3 px-6 !rounded-button text-lg font-medium hover:bg-opacity-90 transition inline-block whitespace-nowrap">Đặt sân ngay</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 <section id="booking" class="py-12 bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="max-w-5xl mx-auto bg-white !rounded-lg shadow-lg p-6 md:p-8 -mt-20 relative z-10">
@@ -299,32 +301,48 @@
         </div>
     </div>
 </section>
-<section class="py-12 bg-gray-50">
-    <div class="container mx-auto px-4">
+ <section class="py-12 bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row items-center justify-between">
-            <div class="md:w-1/2 mb-8 md:mb-0">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Tải ứng dụng DatSanBong.vn</h2>
-                <p class="text-gray-600 mb-6">Đặt sân bóng mọi lúc, mọi nơi với ứng dụng di động của chúng tôi. Dễ dàng tìm kiếm, đặt sân và thanh toán chỉ với vài thao tác đơn giản.</p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#" class="flex items-center bg-black text-white py-2 px-4 !rounded-button whitespace-nowrap">
-                        <i class="ri-apple-fill text-2xl mr-2"></i>
-                        <div>
-                            <div class="text-xs">Tải về trên</div>
-                            <div class="font-medium">App Store</div>
-                        </div>
-                    </a>
-                    <a href="#" class="flex items-center bg-black text-white py-2 px-4 !rounded-button whitespace-nowrap">
-                        <i class="ri-google-play-fill text-2xl mr-2"></i>
-                        <div>
-                            <div class="text-xs">Tải về trên</div>
-                            <div class="font-medium">Google Play</div>
-                        </div>
-                    </a>
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">
+              Tải ứng dụng DatSanBong.vn
+            </h2>
+            <p class="text-gray-600 mb-6">
+              Đặt sân bóng mọi lúc, mọi nơi với ứng dụng di động của chúng tôi.
+              Dễ dàng tìm kiếm, đặt sân và thanh toán chỉ với một số thao tác
+              đơn giản.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="#"
+                class="flex items-center bg-black text-white py-2 px-4 !rounded-button whitespace-nowrap"
+              >
+                <i class="ri-apple-fill text-2xl mr-2"></i>
+                <div>
+                  <div class="text-xs">Tải về</div>
+                  <div class="font-medium">App Store</div>
                 </div>
+              </a>
+              <a
+                href="#"
+                class="flex items-center bg-black text-white py-2 px-4 !rounded-button whitespace-nowrap"
+              >
+                <i class="ri-google-play-fill text-2xl mr-2"></i>
+                <div>
+                  <div class="text-xs">Tải về</div>
+                  <div class="font-medium">Google Play</div>
+                </div>
+              </a>
             </div>
-            <div class="md:w-1/2">
-                <img src="https://readdy.ai/api/search-image?query=smartphone%20displaying%20a%20sports%20app%20interface%20for%20booking%20soccer%20fields%2C%20modern%20UI%20design%2C%20clean%20layout%2C%20showing%20field%20listings%20and%20booking%20options%2C%20high%20quality%20mockup%20on%20white%20background&width=600&height=500&seq=8&orientation=portrait" alt="SanBong.vn App" class="w-full max-w-md mx-auto">
-            </div>
+          </div>
+          <div class="md:w-1/2">
+            <img
+              src="https://readdy.ai/api/search-image?query=smartphone%2520displaying%2520a%2520sports%2520app%2520interface%2520for%2520booking%2520soccer%2520fields%252C%2520modern%2520UI%2520design%252C%2520clean%2520layout%252C%2520showing%2520field%2520listings%2520and%2520booking%2520options%252C%2520high%2520quality%2520mockup%2520on%2520white%2520background&width=600&height=500&seq=8&orientation=portrait"
+              alt="Ứng dụng SanBong.vn"
+              class="w-full max-w-md mx-auto"
+            />
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
