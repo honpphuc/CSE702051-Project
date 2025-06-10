@@ -339,7 +339,7 @@
           <div class="md:w-1/2">
             <img
               src="https://readdy.ai/api/search-image?query=smartphone%2520displaying%2520a%2520sports%2520app%2520interface%2520for%2520booking%2520soccer%2520fields%252C%2520modern%2520UI%2520design%252C%2520clean%2520layout%252C%2520showing%2520field%2520listings%2520and%2520booking%2520options%252C%2520high%2520quality%2520mockup%2520on%2520white%2520background&width=600&height=500&seq=8&orientation=portrait"
-              alt="Ứng dụng SanBong.vn"
+              alt="Ứng dụng DatSanBong.vn"
               class="w-full max-w-md mx-auto"
             />
           </div>

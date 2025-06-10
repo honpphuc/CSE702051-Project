@@ -51,7 +51,7 @@
     </div>
 
     <div class="border-t border-gray-700 pt-6 mt-6 flex justify-between items-center text-sm text-gray-400">
-      <p>© 2025 SanBong.vn. Tất cả quyền được bảo lưu.</p>
+      <p>© 2025 DatSanBong.vn. Tất cả quyền được bảo lưu.</p>
       <div class="flex items-center space-x-3">
         <span>Thanh toán:</span>
         <i class="ri-visa-line text-xl"></i>
