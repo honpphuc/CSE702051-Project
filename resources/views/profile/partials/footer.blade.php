@@ -2,12 +2,12 @@
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
       <div>
-        <a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">SanBong</a>
+        <a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">DatSanBong</a>
         <p class="text-gray-400 mb-4">Nền tảng đặt sân bóng đá trực tuyến hàng đầu Việt Nam.</p>
         <div class="flex space-x-4">
-          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition"><i class="ri-facebook-fill"></i></a>
+          <a href="https://www.facebook.com/honpphuc" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition"><i class="ri-facebook-fill"></i></a>
           <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition"><i class="ri-instagram-line"></i></a>
-          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition"><i class="ri-youtube-line"></i></a>
+          <a href="https://www.youtube.com/watch?v=7kO_ALcwNAw" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition"><i class="ri-youtube-line"></i></a>
         </div>
       </div>
 
