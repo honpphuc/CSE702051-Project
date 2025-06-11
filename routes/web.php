@@ -43,4 +43,9 @@ Route::get('/register', function () {
 Route::get('/main', function (){
     return view('home');
 })->name('main');
+
+Route::get('/infor', function () {
+    return view('profile.news.infor');
+})->name('news.infor');
+
 require __DIR__.'/auth.php';
