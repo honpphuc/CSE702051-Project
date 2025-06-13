@@ -32,11 +32,11 @@
 </head>
 <body class="bg-white font-['Roboto']">
 
-  @include('profile.partials.header')
+  @include('components.partials.header')
   <main>
     @yield('content')
   </main>
-  @include('profile.partials.footer') 
-  <!-- @include('profile.partials.modals')  -->
+  @include('components.partials.footer') 
+  @include('components.partials.modals') 
   </body>
 </html>

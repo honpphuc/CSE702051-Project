@@ -1,8 +1,4 @@
-@extends('layouts.app')
-
-@section('title', 'Thông Tin Liên Hệ')
-
-@section('content')
+<x-app-layout>
 <div class="container">
     <h2>Thông Tin Liên Hệ Cá Nhân</h2>
     <div class="card mb-3" style="max-width: 540px;">
@@ -21,4 +17,4 @@
         </div>
     </div>
 </div>
-@endsection
+</x-app-layout> 
