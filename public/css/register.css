@@ -1,0 +1,335 @@
+/* register-style.css - CSS cho trang Register giống Login */
+
+/* Reset và base styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Override Laravel guest layout background */
+.min-h-screen,
+body {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 25%, #2E7D32 50%, #1B5E20 75%, #0D4F14 100%) !important;
+    min-height: 100vh !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background grid pattern */
+.min-h-screen::before,
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 100px 100px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Form container - Glass morphism effect */
+.bg-white,
+.dark\\:bg-gray-800,
+.shadow-md,
+.overflow-hidden,
+.sm\\:rounded-lg {
+    background: linear-gradient(135deg, 
+        rgba(139, 195, 74, 0.15) 0%, 
+        rgba(76, 175, 80, 0.12) 25%,
+        rgba(33, 150, 243, 0.15) 75%,
+        rgba(63, 81, 181, 0.12) 100%) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    border-radius: 20px !important;
+    box-shadow: 
+        0 8px 32px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.2) !important;
+    position: relative;
+    z-index: 10;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+}
+
+/* Logo container styling */
+.register-logo {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+
+.register-logo .logo-box {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.register-logo svg {
+    width: 40px;
+    height: 40px;
+    stroke: rgba(255,255,255,0.9);
+    stroke-width: 2;
+    fill: none;
+}
+
+/* Input labels */
+.text-sm.font-medium.text-gray-700,
+.dark\\:text-gray-300,
+label {
+    color: rgba(255,255,255,0.95) !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    margin-bottom: 8px !important;
+    display: block !important;
+}
+
+/* Input fields styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+.border-gray-300,
+.dark\\:border-gray-700,
+.focus\\:border-indigo-500,
+.dark\\:focus\\:border-indigo-600 {
+    width: 100% !important;
+    padding: 14px 16px !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    border-radius: 12px !important;
+    background: rgba(255,255,255,0.1) !important;
+    color: white !important;
+    font-size: 16px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+/* Input placeholder */
+input::placeholder {
+    color: rgba(255,255,255,0.6) !important;
+    font-size: 15px !important;
+}
+
+/* Input focus state */
+input:focus {
+    outline: none !important;
+    border-color: rgba(255,255,255,0.4) !important;
+    background: rgba(255,255,255,0.15) !important;
+    box-shadow: 
+        0 0 0 3px rgba(255,255,255,0.1),
+        inset 0 1px 3px rgba(0,0,0,0.1) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Primary button (Đăng Ký) */
+.bg-gray-800,
+.dark\\:bg-gray-200,
+.hover\\:bg-gray-700,
+.dark\\:hover\\:bg-white,
+button[type="submit"] {
+    width: 100% !important;
+    padding: 16px !important;
+    background: rgba(255,255,255,0.15) !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    border-radius: 12px !important;
+    color: white !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+}
+
+/* Button hover state */
+button[type="submit"]:hover,
+.bg-gray-800:hover,
+.dark\\:bg-gray-200:hover {
+    background: rgba(255,255,255,0.2) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+/* Link styling */
+.text-gray-600,
+.dark\\:text-gray-400,
+.hover\\:text-gray-900,
+.dark\\:hover\\:text-gray-100,
+a {
+    color: rgba(255,255,255,0.8) !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+}
+
+.text-gray-600:hover,
+.dark\\:text-gray-400:hover,
+a:hover {
+    color: rgba(255,255,255,1) !important;
+    text-decoration: underline !important;
+}
+
+/* Error messages styling */
+.text-red-600,
+.dark\\:text-red-400,
+.text-sm.text-red-600 {
+    color: #ffcdd2 !important;
+    background: rgba(244, 67, 54, 0.15) !important;
+    padding: 10px 14px !important;
+    border-radius: 8px !important;
+    border-left: 4px solid #f44336 !important;
+    font-size: 13px !important;
+    margin-top: 8px !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Form spacing */
+.mt-4 {
+    margin-top: 20px !important;
+}
+
+.mt-1 {
+    margin-top: 8px !important;
+}
+
+.mt-2 {
+    margin-top: 10px !important;
+}
+
+/* Footer section */
+.flex.items-center.justify-end {
+    margin-top: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+}
+
+/* Container padding */
+.px-6.py-4,
+.p-6 {
+    padding: 40px !important;
+}
+
+/* Floating decorative elements */
+.floating-decoration {
+    position: absolute;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: float 8s ease-in-out infinite;
+}
+
+.floating-decoration:nth-child(1) {
+    width: 120px;
+    height: 120px;
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-decoration:nth-child(2) {
+    width: 80px;
+    height: 80px;
+    top: 70%;
+    right: 15%;
+    animation-delay: 3s;
+}
+
+.floating-decoration:nth-child(3) {
+    width: 100px;
+    height: 100px;
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 6s;
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg) scale(1); 
+        opacity: 0.3;
+    }
+    33% { 
+        transform: translateY(-20px) rotate(5deg) scale(1.05); 
+        opacity: 0.4;
+    }
+    66% { 
+        transform: translateY(-10px) rotate(-5deg) scale(0.95); 
+        opacity: 0.35;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+    .bg-white, .dark\\:bg-gray-800 {
+        margin: 20px !important;
+        max-width: calc(100vw - 40px) !important;
+    }
+    
+    .px-6.py-4, .p-6 {
+        padding: 30px 25px !important;
+    }
+    
+    .flex.items-center.justify-end {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 20px !important;
+    }
+    
+    .ml-4 {
+        margin-left: 0 !important;
+        margin-top: 10px !important;
+    }
+}
+
+/* Dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+    .dark\\:bg-gray-900 {
+        background: linear-gradient(135deg, #4CAF50 0%, #45a049 25%, #2E7D32 50%, #1B5E20 75%, #0D4F14 100%) !important;
+    }
+}
+
+/* Focus ring removal */
+.focus\\:ring-2,
+.focus\\:ring-offset-2,
+.focus\\:ring-indigo-500,
+.dark\\:focus\\:ring-offset-gray-800 {
+    box-shadow: none !important;
+}
+
+/* Additional visual enhancements */
+.underline {
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+    text-decoration-thickness: 1px !important;
+}   

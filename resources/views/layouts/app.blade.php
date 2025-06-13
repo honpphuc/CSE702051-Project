@@ -33,12 +33,10 @@
 <body class="bg-white font-['Roboto']">
 
   @include('profile.partials.header')
-  @include('profile.partials.section')  
   <main>
     @yield('content')
   </main>
-
   @include('profile.partials.footer') 
-  @include('profile.partials.modals') 
+  <!-- @include('profile.partials.modals')  -->
   </body>
 </html>
