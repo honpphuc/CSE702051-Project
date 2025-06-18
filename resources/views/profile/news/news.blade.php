@@ -7,7 +7,7 @@
     <title>Tin tức - DatSanBong</title>
 
     <!-- CSS External -->
-    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="style.css">
 
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
