@@ -36,4 +36,12 @@ Route::get('/infor', function () {
     return view('profile.news.infor');
 })->name('news.infor');
 
+Route::get('/news', function () {
+    return view('profile.news.news');
+})->name('news.news');
+
+// Route::get('/review', function(){
+//     return view('profile.news.review');
+// })->name('news.review');  
+
 require __DIR__.'/auth.php';

@@ -20,8 +20,8 @@
           <a href="{{ route ('main')}}" class="text-gray-800 font-medium hover:text-primary transition">Trang chủ</a>
           <a href="#" class="text-gray-800 font-medium hover:text-primary transition">Đặt sân</a>
           <a href="#" class="text-gray-800 font-medium hover:text-primary transition">Giới thiệu</a>
-          <a href="#" class="text-gray-800 font-medium hover:text-primary transition">Tin tức</a>
-          <a href="{{ route('news.infor') }}" class="text-gray-800 font-medium hover:text-primary transition">Liên hệ</a>
+          <a href="{{ route ('news.news') }}" class="text-gray-800 font-medium hover:text-primary transition">Tin tức</a>
+          <a href="{{ route ('news.infor') }}" class="text-gray-800 font-medium hover:text-primary transition">Liên hệ</a>
         </nav>
         <div class="flex items-center space-x-4">
           <button id="loginBtn" class="text-gray-800 hover:text-primary transition font-medium">
