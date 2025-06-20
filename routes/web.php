@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,12 +37,9 @@ Route::get('/infor', function () {
     return view('profile.news.infor');
 })->name('news.infor');
 
-Route::get('/news', function () {
-    return view('profile.news.news');
-})->name('news.news');
-
 // Route::get('/review', function(){
 //     return view('profile.news.review');
 // })->name('news.review');  
+Route::get('/news', [ArticleController::class, 'index'])->name('profile.news.news');
 
 require __DIR__.'/auth.php';
