@@ -29,7 +29,7 @@
                 <h1 class="text-3xl font-bold text-gray-800 text-center">Tin tức bóng đá</h1>
                 <p class="text-gray-600 mt-2 text-center">Cập nhật những tin tức mới nhất về bóng đá trong nước và quốc tế</p>
             </div>
-            <!-- Featured News -->
+            <!-- Tin nổi bật -->
             <div class="mb-12">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Tin nổi bật</h2>
 
@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <!-- News List -->
+            <!-- Tin tức mới nhất -->
             <div class="mb-12">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Tin tức mới nhất</h2>
 
@@ -105,8 +105,7 @@
             </div>
 
 
-
-            <!-- Video News -->
+            <!-- Video nổi bật -->
             <div class="mb-12">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Video nổi bật</h2>
 
@@ -143,8 +142,6 @@
                     </div>
                     @endforeach
                 </div>
-            </div>
-
         </main>
         <script src="script.js"></script>
     </body>

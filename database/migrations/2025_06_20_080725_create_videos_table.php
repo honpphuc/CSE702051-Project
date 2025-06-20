@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->string('title'); // Tiêu đề video
-            $table->string('link'); // Đường dẫn YouTube/video
+            $table->string('link')->nullable();
             $table->string('thumbnail')->nullable(); // Ảnh đại diện video
             $table->string('duration')->nullable(); // Thời lượng (ví dụ: 03:45)
             $table->date('date_posted')->nullable(); // Ngày đăng
