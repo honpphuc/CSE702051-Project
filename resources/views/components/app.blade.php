@@ -34,7 +34,7 @@
 
   @include('components.partials.header')
   <main>
-    @yield('content')
+    {{ $slot}}
   </main>
   @include('components.partials.footer') 
   @include('components.partials.modals') 

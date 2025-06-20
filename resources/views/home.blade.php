@@ -1,5 +1,3 @@
-@extends('layouts.app')
-@section('title', 'Trang chủ')
-@section('content')
-@include('components.partials.section')  
-@endsection
+<x-app title="Trang chủ">
+  @include('components.partials.section')
+</x-app>
