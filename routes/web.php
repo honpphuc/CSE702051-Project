@@ -40,6 +40,10 @@ Route::get('/news', function () {
     return view('profile.news.news');
 })->name('news.news');
 
+Route::get('/booking/history', function () {
+    return view('booking.history');
+}) ->middleware(('auth')) -> name('booking.history');
+
 // Route::get('/review', function(){
 //     return view('profile.news.review');
 // })->name('news.review');  

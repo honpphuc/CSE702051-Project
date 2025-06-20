@@ -42,10 +42,14 @@
 
                     <x-slot name="content">
                         <x-dropdown-link href="{{ route('profile.edit') }}">Hồ sơ</x-dropdown-link>
+                        <!-- Booking History -->
+                        <x-dropdown-link :href="route('booking.history')">
+                            {{__('Sân đã đặt')}}
+                        </x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <x-dropdown-link href="{{ route('logout') }}"
-                                     onclick="event.preventDefault(); this.closest('form').submit();">
+                                    onclick="event.preventDefault(); this.closest('form').submit();">
                                 Đăng xuất
                             </x-dropdown-link>
                         </form>

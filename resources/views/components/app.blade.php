@@ -29,6 +29,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="{{ asset('style.css') }}">
+  @include('components.partials.modals')
+  <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body class="bg-white font-['Roboto']">
 
