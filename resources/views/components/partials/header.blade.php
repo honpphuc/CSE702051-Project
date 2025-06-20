@@ -40,22 +40,22 @@
               </button>
             </x-slot>
 
-            <x-slot name="content">
-              <x-dropdown-link href="{{ route('profile.edit') }}">Hồ sơ</x-dropdown-link>
-              <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <x-dropdown-link href="{{ route('logout') }}"
-                  onclick="event.preventDefault(); this.closest('form').submit();">
-                  Đăng xuất
-                </x-dropdown-link>
-              </form>
-            </x-slot>
-          </x-dropdown>
-          @else
-          <a href="{{ route('login') }}" class="text-gray-800 hover:text-primary transition font-medium">Đăng nhập</a>
-          <a href="{{ route('register') }}" class="bg-primary text-white py-2 px-4 rounded-button hover:bg-opacity-90 transition whitespace-nowrap">Đăng ký</a>
-          @endauth
-          @endif
+                    <x-slot name="content">
+                        <x-dropdown-link href="{{ route('profile.edit') }}">Hồ sơ</x-dropdown-link>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <x-dropdown-link href="{{ route('logout') }}"
+                                     onclick="event.preventDefault(); this.closest('form').submit();">
+                                Đăng xuất
+                            </x-dropdown-link>
+                        </form>
+                    </x-slot>
+                </x-dropdown>
+            @else
+                <a href="{{ route('login') }}" class="text-gray-800 hover:text-primary transition font-medium">Đăng nhập</a>
+                <a href="{{ route('register') }}" class="bg-primary text-white py-2 px-4 rounded-button hover:bg-opacity-90 transition whitespace-nowrap">Đăng ký</a>
+            @endauth
+        @endif
 
           <!-- Mobile Toggle -->
           <button @click="open = ! open" class="md:hidden w-10 h-10 flex items-center justify-center focus:outline-none">

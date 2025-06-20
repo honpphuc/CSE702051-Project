@@ -38,6 +38,11 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        <!-- Booking History -->
+                        <x-dropdown-link :href="route('booking.history')">
+                            {{__('Sân đã đặt')}}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
