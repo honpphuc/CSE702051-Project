@@ -1,4 +1,6 @@
 <x-app-layout>
+<script src="{{ asset('js/booking-modal.js') }}"></script>
+<script src="{{ asset('js/radio-button.js') }}"></script>
 <main class="py-10 bg-gray-50">
     <div class="container mx-auto px-4">
         <!-- Sân bóng nổi bật -->
