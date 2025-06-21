@@ -1,4 +1,4 @@
-# 🎓 Dự án môn học: Lập trình Web nâng cao
+# 🎓 Dự án môn học: Thiết kế Web nâng cao
 
 ## 🔖 Tên dự án: Hệ thống quản lý đặt sân bóng đá mini
 
@@ -6,11 +6,11 @@
 
 ## 📌 Thông tin chung
 
-- **Môn học:** Lập trình Web nâng cao  
-- **Giảng viên hướng dẫn:** [Tên giảng viên nếu có]  
-- **Học kỳ:** II, Năm học 2024–2025  
-- **Nhóm:** Nhóm 3  
-- **Lớp:** [Lớp học phần nếu có]  
+- **Môn học:** Thiết kế web nâng cao
+- **Giảng viên hướng dẫn:** Nguyễn Thị Thùy Liên
+- **Học kỳ:** 3 năm học 2024 - 2025
+- **Nhóm:** Nhóm 5  
+- **Lớp:** Thiết kế web nâng cao (N01.LT8)
 
 ---
 
