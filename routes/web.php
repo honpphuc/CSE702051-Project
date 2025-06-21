@@ -44,5 +44,8 @@ Route::get('/booking/history', function () {
 //     return view('profile.news.review');
 // })->name('news.review');  
 Route::get('/news', [ArticleController::class, 'index'])->name('profile.news.news');
+Route::get('/booking', function () {
+    return view('components.partials.booking');
+})->name('components.partials.booking');
 
 require __DIR__.'/auth.php';

@@ -25,4 +25,7 @@ class newController extends Controller
     public function infor(){
         return view('new.infor');
     }
+    public function booking(){
+        return view('partials.booking');
+    }
 }

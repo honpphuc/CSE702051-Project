@@ -1,19 +1,4 @@
-
-<script src="{{ asset('js/booking-modal.js') }}"></script>
-<script src="{{ asset('js/radio-button.js') }}"></script>
-
-<section class="hero-section py-20 relative">
-    <div style="background-image: url('https://readdy.ai/api/search-image?query=Professional%20soccer%20field%20with%20stadium%20lights%20at%20dusk%2C%20beautiful%20green%20grass%2C%20modern%20sports%20facility%2C%20empty%20field%20ready%20for%20game%2C%20dramatic%20lighting%2C%20high%20quality%20professional%20football%20pitch%2C%20wide%20angle%20view%2C%20atmospheric%20scene&width=1920&height=800&seq=1&orientation=landscape');" class="absolute inset-0 bg-cover bg-center"></div>
-    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-    <div class="container mx-auto px-4 w-full relative z-10">
-        <div class="max-w-2xl text-white mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Chào mừng đến với DatSanBong.vn</h1>
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Đặt sân bóng đá trực tuyến dễ dàng</h2>
-            <p class="text-lg mb-8">Tìm và đặt sân bóng đá gần bạn chỉ với vài cú nhấp chuột. Tiết kiệm thời gian và tận hưởng trận đấu của bạn.</p>
-            <a href="#booking" class="bg-primary text-white py-3 px-6 !rounded-button text-lg font-medium hover:bg-opacity-90 transition inline-block whitespace-nowrap">Đặt sân ngay</a>
-        </div>
-    </div>
-</section>
+<x-app-layout>
 <main class="py-10 bg-gray-50">
     <div class="container mx-auto px-4">
         <!-- Sân bóng nổi bật -->
@@ -494,3 +479,4 @@
                 </div>
             </div>
         </div>
+    </x-app-layout>
