@@ -3,7 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\historyBooking;
+=======
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BookingController;
+>>>>>>> 59a31c259dd5738860a794384b7502bb6d350ba5
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +22,11 @@ use App\Http\Controllers\historyBooking;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -38,18 +43,30 @@ Route::get('/infor', function () {
     return view('profile.news.infor');
 })->name('news.infor');
 
-Route::get('/news', function () {
-    return view('profile.news.news');
-})->name('news.news');
-
 Route::get('/booking/history', function () {
+<<<<<<< HEAD
     $history = Booking::where('user_id', auth()->id())->with('san')->latest()->get();
     return view('booking.history', compact('history'));
 })->middleware('auth')->name('booking.history');
 
 
+=======
+    return view('booking.history');
+}) ->middleware(('auth')) -> name('booking.history');
+>>>>>>> 59a31c259dd5738860a794384b7502bb6d350ba5
 // Route::get('/review', function(){
 //     return view('profile.news.review');
 // })->name('news.review');  
+Route::get('/news', [ArticleController::class, 'index'])->name('profile.news.news');
+Route::get('/booking', function () {
+    return view('components.partials.booking');
+})->name('components.partials.booking');
 
 require __DIR__.'/auth.php';
+Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+Route::get('/bookings/create', [BookingController::class, 'create'])->name('bookings.create');
+Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
+Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('bookings.show');
+Route::get('/bookings/{booking}/edit', [BookingController::class, 'edit'])->name('bookings.edit');
+Route::put('/bookings/{booking}', [BookingController::class, 'update'])->name('bookings.update');
+Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');

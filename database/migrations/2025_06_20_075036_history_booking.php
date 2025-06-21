@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('history_booking', function (Blueprint $table) {
-            $table -> id();
-            $table -> foreign('user_id') -> contrained() -> onDelete('cascade');
-            $table -> foreign('pitch_id') -> constrained() -> onDelete('cascade');
-            $table -> date('ngay');
-            $table -> string('gio');
-            $table -> string('trang_thai') -> default('Trống');
-            $table -> timestamps();
-        });
+        if (!Schema::hasTable('history_booking')) {
+            Schema::create('history_booking', function (Blueprint $table) {
+                $table->id();
+                $table->date('ngay');
+                $table->string('gio');
+                $table->string('trang_thai')->default('Trống');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
