@@ -17,6 +17,9 @@ class BookingSeeder extends Seeder
                 'start_time' => '09:00:00',
                 'end_time' => '10:00:00',
                 'total_price' => 315000,
+                'status' => 'pending', // Thêm trường status cho khớp migration
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'field_id' => 2,
@@ -25,6 +28,9 @@ class BookingSeeder extends Seeder
                 'start_time' => '10:00:00',
                 'end_time' => '11:00:00',
                 'total_price' => 300000,
+                'status' => 'pending',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'field_id' => 3,
@@ -33,6 +39,9 @@ class BookingSeeder extends Seeder
                 'start_time' => '11:00:00',
                 'end_time' => '12:00:00',
                 'total_price' => 280000,
+                'status' => 'pending',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ]);
     }

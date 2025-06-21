@@ -13,15 +13,20 @@ class BookingController extends Controller
         $request->validate([
             'field_id' => 'required|exists:fields,id',
             'booking_date' => 'required|date',
-            'time_slot' => 'required',
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i|after:start_time',
             'user_id' => 'required|exists:users,id',
+            'total_price' => 'required|numeric',
         ]);
 
         $booking = Booking::create([
             'field_id' => $request->field_id,
             'booking_date' => $request->booking_date,
-            'time_slot' => $request->time_slot,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
             'user_id' => $request->user_id,
+            'total_price' => $request->total_price,
+            'status' => $request->status ?? 'pending',
         ]);
 
         return response()->json($booking, 201);
@@ -33,7 +38,10 @@ class BookingController extends Controller
         $request->validate([
             'field_id' => 'sometimes|exists:fields,id',
             'booking_date' => 'sometimes|date',
-            'time_slot' => 'sometimes',
+            'start_time' => 'sometimes|date_format:H:i',
+            'end_time' => 'sometimes|date_format:H:i|after:start_time',
+            'total_price' => 'sometimes|numeric',
+            'status' => 'sometimes|string',
         ]);
 
         $booking = Booking::findOrFail($id);
