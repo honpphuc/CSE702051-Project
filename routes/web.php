@@ -3,12 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\historyBooking;
-=======
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BookingController;
->>>>>>> 59a31c259dd5738860a794384b7502bb6d350ba5
 
 /*
 |--------------------------------------------------------------------------
@@ -44,16 +41,12 @@ Route::get('/infor', function () {
 })->name('news.infor');
 
 Route::get('/booking/history', function () {
-<<<<<<< HEAD
     $history = Booking::where('user_id', auth()->id())->with('san')->latest()->get();
     return view('booking.history', compact('history'));
 })->middleware('auth')->name('booking.history');
 
 
-=======
-    return view('booking.history');
-}) ->middleware(('auth')) -> name('booking.history');
->>>>>>> 59a31c259dd5738860a794384b7502bb6d350ba5
+
 // Route::get('/review', function(){
 //     return view('profile.news.review');
 // })->name('news.review');  
