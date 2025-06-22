@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Booking;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\historyBooking;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AdminController;
@@ -40,8 +42,12 @@ Route::get('/infor', function () {
 })->name('news.infor');
 
 Route::get('/booking/history', function () {
-    return view('booking.history');
-}) ->middleware(('auth')) -> name('booking.history');
+    $history = Booking::where('user_id', auth()->id())->with('san')->latest()->get();
+    return view('booking.history', compact('history'));
+})->middleware('auth')->name('booking.history');
+
+
+
 // Route::get('/review', function(){
 //     return view('profile.news.review');
 // })->name('news.review');  
