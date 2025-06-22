@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title', 'Admin Panel')</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body { background: #f8fafc; }
+        .sidebar { min-height: 100vh; background: #212529; }
+        .sidebar .nav-link { color: #fff; }
+        .sidebar .nav-link.active, .sidebar .nav-link:hover { background: #343a40; color: #ffc107; }
+        .sidebar .btn { width: 100%; }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <div class="flex">
-        @include('admin.partials.sidebar')
-        <main class="flex-1 p-6">
-            @yield('content')
-
-        </main>
-    </div>
+<body>
+<div class="d-flex">
+    @include('admin.partials.sidebar')
+    <main class="flex-grow-1 p-4">
+        @yield('content')
+    </main>
+</div>
 </body>
 </html>

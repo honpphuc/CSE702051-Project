@@ -82,8 +82,9 @@ class AdminFieldController extends Controller
             'address' => 'required',
             'price_per_hour' => 'required|numeric',
             'image' => 'nullable|string|max:255', // Optional image validation
+            'type' => 'required',
         ]);
-        $field->update($request->only('name', 'address', 'price_per_hour' , 'image'));
+        $field->update($request->only('name', 'address', 'price_per_hour' , 'image', 'type'));
         return redirect()->route('admin.fields.index')->with('success', 'Cập nhật thành công!');
     }
 
