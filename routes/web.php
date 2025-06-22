@@ -52,9 +52,8 @@ Route::get('/booking/history', function () {
 //     return view('profile.news.review');
 // })->name('news.review');  
 Route::get('/news', [ArticleController::class, 'index'])->name('profile.news.news');
-Route::get('/booking', function () {
-    return view('components.partials.booking');
-})->name('components.partials.booking');
+Route::get('/booking', [BookingController::class, 'showBookingForm'])->name('components.partials.booking');
+Route::post('/booking', [BookingController::class, 'store'])->name('bookings.store');
 
 require __DIR__.'/auth.php';
 Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');

@@ -1,82 +1,61 @@
-
 document.addEventListener("DOMContentLoaded", function () {
-  const bookingModal = document.getElementById("booking-modal");
-  const closeModalBtn = document.getElementById("close-modal");
-  const bookButtons = document.querySelectorAll(
-    "button:not(#close-modal):not(.time-slot):not(#confirm-booking)"
-  );
-  const timeSlots = document.querySelectorAll(".time-slot");
-  const fieldPrice = document.getElementById("field-price");
-  const serviceFee = document.getElementById("service-fee");
-  const totalPrice = document.getElementById("total-price");
-  const confirmBookingBtn = document.getElementById("confirm-booking");
-  const modalFieldName = document.getElementById("modal-field-name");
-  const modalFieldAddress = document.getElementById("modal-field-address");
-  const modalFieldImage = document.getElementById("modal-field-image");
-  const bookingDate = document.getElementById("booking-date");
+    const modal = document.getElementById("booking-modal");
+    const fieldSelect = document.getElementById("field_id");
+    const startTimeInput = document.getElementById("start_time");
+    const endTimeInput = document.getElementById("end_time");
+    const totalPriceInput = document.getElementById("total_price");
 
-  const today = new Date().toISOString().split("T")[0];
-  bookingDate.min = today;
-  bookingDate.value = today;
+    const openButtons = document.querySelectorAll(".dat-san-btn");
 
-  bookButtons.forEach((button) => {
-    if (button.textContent.trim() === "Đặt sân") {
-      button.addEventListener("click", function () {
-        const card = this.closest(".bg-white");
-        if (card) {
-          const fieldName = card.querySelector("h3").textContent;
-          const fieldAddress = card.querySelector(".text-sm.text-gray-600").textContent;
-          const fieldImg = card.querySelector("img").src;
+    openButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const fieldCard = button.closest("[data-field-id]");
+            const fieldId = fieldCard.dataset.fieldId;
 
-          modalFieldName.textContent = fieldName;
-          modalFieldAddress.textContent = fieldAddress;
-          modalFieldImage.src = fieldImg;
+            // Hiển thị modal
+            modal.classList.remove("hidden");
+
+            // Chọn sân tương ứng
+            fieldSelect.value = fieldId;
+
+            // Reset giờ và giá
+            startTimeInput.value = "06:00";
+            endTimeInput.value = "07:00";
+            calculatePrice();
+        });
+    });
+
+    // Đóng modal khi click ra ngoài
+    modal.addEventListener("click", function (e) {
+        if (e.target === modal) {
+            modal.classList.add("hidden");
+        }
+    });
+
+    // Tính tổng tiền
+    function calculatePrice() {
+        const start = startTimeInput.value;
+        const end = endTimeInput.value;
+        const fieldId = fieldSelect.value;
+
+        if (!start || !end || !fieldId) return;
+
+        const startHour = parseInt(start.split(":")[0]);
+        const endHour = parseInt(end.split(":")[0]);
+        const duration = endHour - startHour;
+
+        if (duration <= 0) {
+            totalPriceInput.value = 0;
+            return;
         }
 
-        bookingModal.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-      });
+        const field = window.fieldsData.find(f => f.id == fieldId);
+        const price = field?.price_per_hour ?? 0;
+
+        totalPriceInput.value = duration * price;
     }
-  });
 
-  closeModalBtn.addEventListener("click", function () {
-    bookingModal.classList.add("hidden");
-    document.body.style.overflow = "auto";
-  });
-
-  bookingModal.addEventListener("click", function (e) {
-    if (e.target === bookingModal) {
-      bookingModal.classList.add("hidden");
-      document.body.style.overflow = "auto";
-    }
-  });
-
-  timeSlots.forEach((slot) => {
-    slot.addEventListener("click", function () {
-      timeSlots.forEach((s) => {
-        s.classList.remove("bg-primary", "text-white");
-        s.classList.add("border-gray-300");
-      });
-
-      this.classList.add("bg-primary", "text-white");
-      this.classList.remove("border-gray-300");
-
-      const price = parseInt(this.dataset.price);
-      fieldPrice.textContent = price.toLocaleString("vi-VN") + "đ";
-      const fee = Math.round(price * 0.05);
-      serviceFee.textContent = fee.toLocaleString("vi-VN") + "đ";
-      const total = price + fee;
-      totalPrice.textContent = total.toLocaleString("vi-VN") + "đ";
-    });
-  });
-
-  if (timeSlots.length > 0) {
-    timeSlots[0].click();
-  }
-
-  confirmBookingBtn.addEventListener("click", function () {
-    alert("Đặt sân thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.");
-    bookingModal.classList.add("hidden");
-    document.body.style.overflow = "auto";
-  });
+    startTimeInput.addEventListener("change", calculatePrice);
+    endTimeInput.addEventListener("change", calculatePrice);
+    fieldSelect.addEventListener("change", calculatePrice);
 });

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('address')->nullable(); // Địa chỉ sân
             $table->text('description')->nullable(); // Mô tả thêm
             $table->decimal('price_per_hour', 10, 2)->nullable(); // Giá thuê/giờ
+            $table->string('image')->nullable(); // Ảnh sân
             $table->boolean('active')->default(true); // Trạng thái hoạt động
             $table->timestamps();
         });

@@ -4,27 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-<<<<<<< HEAD
-use App\Models\San;
-=======
->>>>>>> 59a31c259dd5738860a794384b7502bb6d350ba5
 
 class Booking extends Model
 {
     use HasFactory;
 
-<<<<<<< HEAD
-    protected $table = 'history_booking';
-
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
-
-    public function san() {
-        return $this->belongsTo(San::class);
-=======
+    // Khai báo đúng tên bảng
     protected $table = 'bookings';
 
+    // Các trường cho phép gán dữ liệu hàng loạt
     protected $fillable = [
         'user_id',
         'field_id',
@@ -35,14 +23,15 @@ class Booking extends Model
         'status',
     ];
 
+    // Quan hệ với User
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    // Quan hệ với Field
     public function field()
     {
-        return $this->belongsTo(Field::class);
->>>>>>> 59a31c259dd5738860a794384b7502bb6d350ba5
+        return $this->belongsTo(Field::class, 'field_id');
     }
 }
