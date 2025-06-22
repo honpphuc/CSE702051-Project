@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,3 +58,9 @@ Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('boo
 Route::get('/bookings/{booking}/edit', [BookingController::class, 'edit'])->name('bookings.edit');
 Route::put('/bookings/{booking}', [BookingController::class, 'update'])->name('bookings.update');
 Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
+    Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
+});

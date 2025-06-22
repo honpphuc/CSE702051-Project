@@ -29,6 +29,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Chuyển hướng theo quyền
+        if (auth()->user()->is_admin) {
+            return redirect()->route('admin.dashboard');
+        }
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

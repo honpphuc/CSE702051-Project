@@ -46,6 +46,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+        // Chuyển hướng theo quyền
+        if ($user->is_admin) {
+            return redirect()->route('admin.dashboard');
+        }
         return redirect(RouteServiceProvider::HOME);
     }
 }
