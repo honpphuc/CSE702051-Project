@@ -1,4 +1,4 @@
-
+{{-- 
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -29,4 +29,4 @@
         <p>© 2025 Admin Panel</p>
     </footer>
 </body>
-</html>
+</html> --}}

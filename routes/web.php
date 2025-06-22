@@ -7,6 +7,9 @@ use App\Http\Controllers\historyBooking;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminFieldController;
+use App\Http\Controllers\AdminBookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +69,7 @@ Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->nam
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
-    Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
+    Route::resource('users', AdminUserController::class, ['as' => 'admin']);
+    Route::resource('fields', AdminFieldController::class, ['as' => 'admin']);
+    Route::resource('bookings', AdminBookingController::class, ['as' => 'admin']);
 });
