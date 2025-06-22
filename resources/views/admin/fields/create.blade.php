@@ -7,6 +7,7 @@
         <input type="text" name="name" placeholder="Tên sân" required>
         <input type="text" name="address" placeholder="Địa chỉ" required>
         <input type="number" name="price_per_hour" placeholder="Giá/giờ" required>
+        <input type="text" name="image" placeholder="Link ảnh sân bóng">
         <button type="submit">Lưu</button>
     </form>
 @endsection

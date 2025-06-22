@@ -20,6 +20,15 @@
                     <label class="form-label">Giá/giờ (VNĐ)</label>
                     <input type="number" name="price_per_hour" class="form-control" value="{{ $field->price_per_hour }}" required>
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">Link ảnh sân bóng</label>
+                    <input type="text" name="image" class="form-control" value="{{ $field->image }}">
+                    @if($field->image)
+                        <div class="mt-2">
+                            <img src="{{ $field->image }}" alt="Ảnh sân bóng" style="max-width: 100%; height: 120px; object-fit:cover;">
+                        </div>
+                    @endif
+                </div>
                 <button type="submit" class="btn btn-success">Cập nhật</button>
                 <a href="{{ route('admin.fields.index') }}" class="btn btn-secondary ms-2">Quay lại</a>
             </form>

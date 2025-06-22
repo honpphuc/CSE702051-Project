@@ -22,6 +22,9 @@
                     <td>{{ $field->address }}</td>
                     <td>{{ number_format($field->price_per_hour) }} đ</td>
                     <td>
+                        <img src="{{ $field->image }}" alt="{{ $field->name }}" style="max-width: 100px;">
+                    </td>
+                    <td>
                         <a href="{{ route('admin.fields.edit', $field->id) }}">Sửa</a>
                         <form action="{{ route('admin.fields.destroy', $field->id) }}" method="POST"
                             style="display:inline;">
