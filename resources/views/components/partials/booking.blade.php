@@ -1,5 +1,13 @@
+
 <x-app-layout>
+    <script>
+        window.fieldsData = @json($fields);
+        window.bookedTimes = @json($bookedTimes);
+        window.isGuest = {{ Auth::guest() ? 'true' : 'false' }};
+        window.bookingHasError = {{ $errors->has('booking_time') ? 'true' : 'false' }};
+    </script>
     <script src="{{ asset('js/booking-modal.js') }}"></script>
+    <script src="{{ asset('js/booking-script.js') }}"></script>
     <main class="py-10 bg-gray-50">
         <div class="container mx-auto px-4">
             <!-- DANH SÁCH SÂN BÓNG NỔI BẬT -->
@@ -34,9 +42,15 @@
                                     <span class="text-sm text-gray-600">Giá/giờ:</span>
                                     <span class="font-semibold text-primary">{{ number_format($field->price_per_hour) }} đ</span>
                                 </div>
-                                <button class="w-full bg-primary text-white py-2 rounded dat-san-btn">
-                                    Đặt sân
-                                </button>
+                                @guest
+                                    <button class="w-full bg-primary text-white py-2 rounded dat-san-btn">
+                                        Đặt sân
+                                    </button>
+                                @else
+                                    <button class="w-full bg-primary text-white py-2 rounded dat-san-btn">
+                                        Đặt sân
+                                    </button>
+                                @endguest
                             </div>
                         </div>
                     @endforeach
@@ -55,11 +69,10 @@
                                 totalPrice: 0,
                                 selectedFieldId: '',
                                 bookingDate: '',
-                                // Tạo các khung giờ: 06:00-07:00, 07:15-08:15, 08:30-09:30, ...
                                 slots: (function() {
                                     let result = [];
-                                    let start = 6 * 60; // 06:00
-                                    let end = 22 * 60;  // 22:00
+                                    let start = 6 * 60;
+                                    let end = 22 * 60;
                                     while (start + 60 <= end) {
                                         let slotStart = start;
                                         let slotEnd = start + 60;
@@ -67,7 +80,7 @@
                                             start: slotStart,
                                             end: slotEnd
                                         });
-                                        start += 75; // mỗi lần nhảy 1 tiếng 15 phút
+                                        start += 75;
                                     }
                                     return result;
                                 })(),
@@ -84,7 +97,6 @@
                                     return bookings.some(b => {
                                         const start = parseInt(b.start.split(':')[0])*60 + parseInt(b.start.split(':')[1]);
                                         const end = parseInt(b.end.split(':')[0])*60 + parseInt(b.end.split(':')[1]);
-                                        // Nếu slot.start < booking.end && slot.end > booking.start => trùng
                                         return slot.start < end && slot.end > start;
                                     });
                                 },
@@ -93,6 +105,7 @@
                                 }
                             }"
                         >
+                            @auth
                             <form method="POST" action="{{ route('bookings.store') }}">
                                 @csrf
                                 <input type="hidden" name="field_id" :value="selectedFieldId">
@@ -146,21 +159,15 @@
                                 </div>
                                 <button type="submit" class="bg-primary text-white px-4 py-2 rounded">Xác nhận đặt sân</button>
                             </form>
+                            @else
+                                <div class="text-center text-red-600 font-semibold py-8">
+                                    Bạn cần <a href="{{ route('login') }}" class="underline text-blue-600">đăng nhập</a> để đặt sân!
+                                </div>
+                            @endauth
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <script>
-        window.fieldsData = @json($fields);
-        window.bookedTimes = @json($bookedTimes);
-    </script>
-    @if($errors->has('booking_time'))
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('booking-modal').classList.remove('hidden');
-        });
-    </script>
-    @endif
 </x-app-layout>
