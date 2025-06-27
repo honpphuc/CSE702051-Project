@@ -6,7 +6,7 @@
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Chào mừng đến với DatSanBong.vn</h1>
             <h2 class="text-3xl md:text-4xl font-bold mb-6">Đặt sân bóng đá trực tuyến dễ dàng</h2>
             <p class="text-lg mb-8">Tìm và đặt sân bóng đá gần bạn chỉ với vài cú nhấp chuột. Tiết kiệm thời gian và tận hưởng trận đấu của bạn.</p>
-            <a href="#booking" class="bg-primary text-white py-3 px-6 !rounded-button text-lg font-medium hover:bg-opacity-90 transition inline-block whitespace-nowrap">Đặt sân ngay</a>
+            <a href="{{route('components.partials.booking')}}" class="bg-primary text-white py-3 px-6 !rounded-button text-lg font-medium hover:bg-opacity-90 transition inline-block whitespace-nowrap">Đặt sân ngay</a>
         </div>
     </div>
 </section>

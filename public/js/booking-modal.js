@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Reset giờ và giá
             startTimeInput.value = "06:00";
             endTimeInput.value = "07:00";
+            // Tính tổng tiền ngay khi mở modal
             calculatePrice();
         });
     });
