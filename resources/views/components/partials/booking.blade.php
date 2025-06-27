@@ -1,5 +1,11 @@
-
 <x-app-layout>
+    @if(session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                alert("{{ session('success') }}");
+            });
+        </script>
+    @endif
     <script>
         window.fieldsData = @json($fields);
         window.bookedTimes = @json($bookedTimes);
