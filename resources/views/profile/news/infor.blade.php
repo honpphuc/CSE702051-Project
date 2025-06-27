@@ -1,91 +1,68 @@
 <x-app-layout>
-    <style>
-        .card-icon {
-            width: 280px;
-            margin: 3rem auto;
-            background: linear-gradient(to bottom, #ffffff, #fef3c7); /* trắng → vàng nhạt */
-            color: #1f2937;
-            border-radius: 20px;
-            padding: 2rem 1.2rem;
-            text-align: center;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-            font-family: 'Segoe UI', sans-serif;
-            position: relative;
-            overflow: hidden;
-            border: 3px solid #eab308;
-        }
+    <link rel="stylesheet" href="{{ asset('css/contact-info.css') }}">
 
-        .card-icon .overall {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            font-size: 1.7rem;
-            font-weight: 800;
-            color: #eab308;
+    @php
+        // Demo dữ liệu liên hệ (thay bằng dữ liệu từ controller khi dùng thực tế)
+        $contacts = [
+            ['name' => 'Lee Hồnn Foot', 'email' => 'doibuonjqk@gmail.com', 'phone' => '123456789', 'position' => 'Trưởng dự án'],
+            ['name' => 'Nguyễn Văn A', 'email' => 'nguyenvana@gmail.com', 'phone' => '0987654321', 'position' => 'Thành viên'],
+            ['name' => 'Trần Thị B', 'email' => 'tranthib@gmail.com', 'phone' => '0911222333', 'position' => 'Thành viên'],
+            ['name' => 'Phạm Văn C', 'email' => 'phamvanc@gmail.com', 'phone' => '0909090909', 'position' => 'Thành viên'],
+        ];
+        $search = request('search');
+        if ($search) {
+            $contacts = array_filter($contacts, function($c) use ($search) {
+                return stripos($c['name'], $search) !== false
+                    || stripos($c['email'], $search) !== false
+                    || stripos($c['phone'], $search) !== false
+                    || stripos($c['position'], $search) !== false;
+            });
         }
+    @endphp
 
-        .card-icon .badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 36px;
-            height: 36px;
-        }
-
-        .card-icon img.avatar {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #fff;
-            background-color: #f9fafb;
-            margin: 2rem auto 1rem;
-            box-shadow: 0 0 10px rgba(0,0,0,0.15);
-        }
-
-        .card-icon .name {
-            font-size: 1.25rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .card-icon .position {
-            font-size: 0.95rem;
-            color: #4b5563;
-            margin-top: 0.25rem;
-        }
-
-        .card-icon .info {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .card-icon .btn {
-            margin-top: 1rem;
-            display: inline-block;
-            background-color: #facc15;
-            color: #000;
-            font-weight: 600;
-            padding: 0.5rem 1.1rem;
-            border: none;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .card-icon .btn:hover {
-            background-color: #eab308;
-        }
-    </style>
-
-    <div class="card-icon">
-        <div class="overall">199</div>
-        <img src="{{ asset('img/vietnam-flag.png') }}" alt="Nation" class="badge">
-        <img src="{{ asset('img/avatar.png') }}" alt="Avatar" class="avatar">
-        <div class="name">Lee Hồnn Foot</div>
-        <div class="position">RM — ICON</div>
-        <div class="info"><strong>Email:</strong> doibuonjqk@gmail.com</div>
-        <div class="info"><strong>Số điện thoại:</strong> 123456789</div>
-        <a href="mailto:doibuonjqk@gmail.com" class="btn">Liên hệ qua Email</a>
+    <div class="contact-reason">
+        <img src="{{ asset('img/vietnam-flag.png') }}" alt="Thắc mắc" class="faq-img">
+        <strong>Lý do liên hệ:</strong>
+        <ul>
+            <li>Hỗ trợ kỹ thuật hoặc thắc mắc về hệ thống.</li>
+            <li>Liên hệ hợp tác, quảng cáo hoặc tài trợ.</li>
+            <li>Góp ý, phản hồi về nội dung hoặc chức năng.</li>
+        </ul>
     </div>
+
+    <!-- <div class="search-box">
+        <form method="GET">
+            <input type="text" name="search" placeholder="Tìm kiếm liên hệ..." value="{{ request('search') }}">
+            <button type="submit">Tìm kiếm</button>
+        </form>
+    </div> -->
+
+    <table class="contact-table">
+        <thead>
+            <tr>
+                <th>Họ tên</th>
+                <th>Chức vụ</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Liên hệ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($contacts as $contact)
+            <tr>
+                <td>{{ $contact['name'] }}</td>
+                <td>{{ $contact['position'] }}</td>
+                <td>{{ $contact['email'] }}</td>
+                <td>{{ $contact['phone'] }}</td>
+                <td>
+                    <a href="mailto:{{ $contact['email'] }}" class="btn">Email</a>
+                </td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="5" style="text-align:center;">Không tìm thấy liên hệ nào.</td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
 </x-app-layout>
