@@ -16,7 +16,7 @@ class ArticleSeeder extends Seeder
                 'category' => 'Tin quốc tế',
                 'date_posted' => '2025-06-18',
                 'views' => 2345,
-                'image_url' => 'https://th.bing.com/th/id/OIP.fkulnS9Ass_z8GnAkFNb5AHaEK',
+                'image_url' => 'https://media.bongda.com.vn/files/duong.nguyen/2023/08/13/ronaldo-1-1532.jpg',
                 'read_more_link' => 'https://vnexpress.net/ronaldo-lap-hat-trick-cho-al-nassr-4646163.html',
             ],
             [
@@ -64,7 +64,51 @@ class ArticleSeeder extends Seeder
                 'image_url' => 'https://houseinhanoi.vn/wp-content/uploads/2019/09/vietnamese-people.jpg',
                 'read_more_link' => 'https://vietnamnet.vn/ve-chung-ket-viet-thai-lan...',
             ],
-
+            [
+                'title' => 'Man City thắng kịch tính ở phút bù giờ',
+                'description' => 'Manchester City giành chiến thắng nghẹt thở trước Chelsea nhờ bàn thắng ở phút 90+4.',
+                'category' => 'Ngoại hạng Anh',
+                'date_posted' => '2025-06-13',
+                'views' => 1980,
+                'image_url' => 'https://media.bongda.com.vn/files/anh.tuan/2023/02/26/man-city-1-1532.jpg',
+                'read_more_link' => 'https://vnexpress.net/man-city-thang-kich-tinh-chelsea-4646164.html',
+            ],
+            [
+                'title' => 'U23 Việt Nam vào chung kết U23 châu Á',
+                'description' => 'U23 Việt Nam xuất sắc vượt qua U23 Hàn Quốc để vào chung kết U23 châu Á 2025.',
+                'category' => 'U23 châu Á',
+                'date_posted' => '2025-06-12',
+                'views' => 1750,
+                'image_url' => 'https://static-images.vnncdn.net/files/publish/2022/06/08/u23-viet-nam-1.jpg',
+                'read_more_link' => 'https://vnexpress.net/u23-viet-nam-vao-chung-ket-u23-chau-a-4844046.html',
+            ],
+            [
+                'title' => 'Real Madrid ký hợp đồng với tài năng trẻ Brazil',
+                'description' => 'Real Madrid tiếp tục chính sách trẻ hóa đội hình bằng việc ký hợp đồng với tiền đạo 18 tuổi người Brazil.',
+                'category' => 'La Liga',
+                'date_posted' => '2025-06-10',
+                'views' => 1600,
+                'image_url' => 'https://media.bongda.com.vn/files/duong.nguyen/2023/08/13/real-madrid-1-1532.jpg',
+                'read_more_link' => 'https://bongdaplus.vn/la-liga/real-madrid-ky-hop-dong-tai-nang-tre-brazil-123456.html',
+            ],
+            [
+                'title' => 'Juventus bị loại khỏi Champions League',
+                'description' => 'Juventus dừng bước ở vòng 1/8 Champions League sau trận thua ngược trước Porto.',
+                'category' => 'Champions League',
+                'date_posted' => '2025-06-09',
+                'views' => 1450,
+                'image_url' => 'https://media.bongda.com.vn/files/anh.tuan/2023/02/26/juventus-1-1532.jpg',
+                'read_more_link' => 'https://bongdaplus.vn/champions-league/juventus-bi-loai-123457.html',
+            ],
+            [
+                'title' => 'Arsenal giữ vững ngôi đầu bảng xếp hạng',
+                'description' => 'Arsenal tiếp tục phong độ ấn tượng để giữ vững vị trí số 1 trên BXH Premier League.',
+                'category' => 'Premier League',
+                'date_posted' => '2025-06-08',
+                'views' => 1520,
+                'image_url' => 'https://media.bongda.com.vn/files/duong.nguyen/2023/08/13/arsenal-1-1532.jpg',
+                'read_more_link' => 'https://bongdaplus.vn/premier-league/arsenal-giu-vung-ngoi-dau-123458.html',
+            ],
         ];
 
         foreach ($articles as $article) {

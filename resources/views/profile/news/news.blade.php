@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <x-app-layout>
 
@@ -27,39 +28,43 @@
             <!-- Page Title -->
             <div class="mb-8">
                 <h1 class="text-3xl font-bold text-gray-800 text-center">Tin tức bóng đá</h1>
-                <p class="text-gray-600 mt-2 text-center">Cập nhật những tin tức mới nhất về bóng đá trong nước và quốc tế</p>
+                <p class="text-gray-600 mt-2 text-center">Cập nhật những tin tức mới nhất về bóng đá trong nước và quốc tế
+                </p>
             </div>
             <!-- Tin nổi bật -->
             <div class="mb-12">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Tin nổi bật</h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    @foreach($articles->take(2) as $article)
-                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+                    @foreach($featured as $item)
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300" data-article-id="{{ $item->id }}">
                         <div class="relative h-64">
-                            <img src="{{ $article->image_url }}" alt="Tin tức bóng đá" class="w-full h-full object-cover object-top">
-                            @if($article->category)
+                            <img src="{{ $item->image_url }}" alt="Tin tức bóng đá" class="w-full h-full object-cover object-top">
+                            @if($item->category)
                             <div class="absolute top-3 left-3 bg-primary text-white px-2 py-1 rounded text-sm">
-                                {{ $article->category }}
+                                {{ $item->category }}
                             </div>
                             @endif
                         </div>
                         <div class="p-5">
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">{{ $article->title }}</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">{{ $item->title }}</h3>
                             <div class="flex items-center text-gray-500 text-sm mb-3">
                                 <span class="flex items-center">
                                     <i class="ri-calendar-line mr-1"></i>
-                                    {{ \Carbon\Carbon::parse($article->date_posted)->format('d/m/Y') }}
+                                    {{ \Carbon\Carbon::parse($item->date_posted)->format('d/m/Y') }}
                                 </span>
                                 <span class="mx-2">•</span>
                                 <span class="flex items-center">
                                     <i class="ri-eye-line mr-1"></i>
-                                    {{ number_format($article->views) }} lượt xem
+                                    <span class="views-count">{{ number_format($item->views) }} lượt xem</span>
                                 </span>
                             </div>
-                            <p class="text-gray-600 mb-4">{{ $article->description }}</p>
-                            @if($article->read_more_link)
-                            <a href="{{ $article->read_more_link }}" class="inline-flex items-center text-primary hover:underline">
+                            <p class="text-gray-600 mb-4">{{ $item->description }}</p>
+                            @if($item->read_more_link)
+                            <a href="{{ route('news.read_more', $item->id) }}"
+                               class="inline-flex items-center text-primary hover:underline read-more-btn"
+                               data-link="{{ route('news.read_more', $item->id) }}"
+                               data-article-id="{{ $item->id }}">
                                 Đọc tiếp <i class="ri-arrow-right-line ml-1"></i>
                             </a>
                             @endif
@@ -69,13 +74,14 @@
                 </div>
             </div>
 
-            <!-- Tin tức mới nhất -->
+            <!-- Tin tức mới nhất (bỏ 2 tin nổi bật ra khỏi danh sách) -->
             <div class="mb-12">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Tin tức mới nhất</h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    @foreach($articles->skip(2) as $article)
-                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 news-card">
+                    @foreach($articles as $article)
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 news-card"
+                         data-article-id="{{ $article->id }}">
                         <div class="relative h-48">
                             <img src="{{ $article->image_url }}" alt="Ảnh bài viết" class="w-full h-full object-cover object-top">
                             @if($article->category)
@@ -91,10 +97,18 @@
                                     <i class="ri-calendar-line mr-1"></i>
                                     {{ \Carbon\Carbon::parse($article->date_posted)->format('d/m/Y') }}
                                 </span>
+                                <span class="mx-2">•</span>
+                                <span class="flex items-center">
+                                    <i class="ri-eye-line mr-1"></i>
+                                    <span class="views-count">{{ number_format($article->views) }} lượt xem</span>
+                                </span>
                             </div>
                             <p class="text-gray-600 mb-3 line-clamp-3">{{ $article->description }}</p>
                             @if($article->read_more_link)
-                            <a href="{{ $article->read_more_link }}" class="inline-flex items-center text-primary hover:underline text-sm">
+                            <a href="{{ route('news.read_more', $article->id) }}"
+                               class="inline-flex items-center text-primary hover:underline text-sm read-more-btn"
+                               data-link="{{ route('news.read_more', $article->id) }}"
+                               data-article-id="{{ $article->id }}">
                                 Đọc tiếp <i class="ri-arrow-right-line ml-1"></i>
                             </a>
                             @endif
@@ -102,8 +116,11 @@
                     </div>
                     @endforeach
                 </div>
+                <!-- Phân trang -->
+                <div class="mt-8">
+                    {{ $articles->links() }}
+                </div>
             </div>
-
 
             <!-- Video nổi bật -->
             <div class="mb-12">
@@ -142,8 +159,17 @@
                     </div>
                     @endforeach
                 </div>
+            </div>
+
+            <!-- Modal popup đọc tiếp -->
+            <div id="readMoreModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full relative">
+                    <button id="closeModalBtn" class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-2xl">&times;</button>
+                    <iframe id="readMoreIframe" src="" class="w-full h-[500px] rounded-b-lg" frameborder="0"></iframe>
+                </div>
+            </div>
         </main>
-        <script src="script.js"></script>
+        <script src="{{ asset('js/news-popup.js') }}"></script>
     </body>
 </x-app-layout>
 

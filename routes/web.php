@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminFieldController;
 use App\Http\Controllers\AdminBookingController;
+use App\Http\Controllers\newController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,7 @@ Route::get('/booking/history', function () {
 Route::get('/news', [ArticleController::class, 'index'])->name('profile.news.news');
 Route::get('/booking', [BookingController::class, 'showBookingForm'])->name('components.partials.booking');
 Route::post('/booking', [BookingController::class, 'store'])->name('bookings.store');
+Route::get('/news/{id}/read', [newController::class, 'readMore'])->name('news.read_more');
 
 require __DIR__.'/auth.php';
 Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
@@ -72,4 +74,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::resource('users', AdminUserController::class, ['as' => 'admin']);
     Route::resource('fields', AdminFieldController::class, ['as' => 'admin']);
     Route::resource('bookings', AdminBookingController::class, ['as' => 'admin']);
+});
+
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function() {
+    Route::resource('articles', \App\Http\Controllers\Admin\ArticleController::class);
+    Route::get('articles-stats', [\App\Http\Controllers\Admin\ArticleController::class, 'stats'])->name('articles.stats');
 });

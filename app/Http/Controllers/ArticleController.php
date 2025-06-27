@@ -13,10 +13,32 @@ class ArticleController extends Controller
 
 public function index()
 {
-    $articles = Article::orderBy('date_posted', 'desc')->get();
-    $videos = Video::orderBy('date_posted', 'desc')->get();
+    // Lấy tất cả bài viết, sắp xếp theo lượt xem giảm dần
+    $allArticles = Article::orderByDesc('views')->get();
 
-    return view('profile.news.news', compact('articles', 'videos'));
+    // Lấy 2 bài nổi bật nhất
+    $featured = $allArticles->take(2);
+
+    // Các bài còn lại, phân trang (6 bài mỗi trang)
+    $articles = $allArticles->slice(2)->values();
+    $perPage = 6;
+    $currentPage = request('page', 1);
+    $pagedArticles = new \Illuminate\Pagination\LengthAwarePaginator(
+        $articles->forPage($currentPage, $perPage),
+        $articles->count(),
+        $perPage,
+        $currentPage,
+        ['path' => request()->url(), 'query' => request()->query()]
+    );
+
+    // Lấy video và phân trang
+    $videos = Video::orderByDesc('date_posted')->paginate(4);
+
+    return view('profile.news.news', [
+        'featured' => $featured,
+        'articles' => $pagedArticles,
+        'videos' => $videos,
+    ]);
 }
 
 }

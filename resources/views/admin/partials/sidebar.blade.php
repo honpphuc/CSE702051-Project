@@ -13,6 +13,21 @@
         <li class="nav-item mb-2">
             <a href="{{ route('admin.bookings.index') }}" class="nav-link {{ request()->routeIs('admin.bookings.*') ? 'active' : '' }}">Đặt sân</a>
         </li>
+        <li class="nav-item mb-2">
+            <a href="{{ route('admin.articles.index') }}" class="nav-link {{ request()->routeIs('admin.articles.*') ? 'active' : '' }}">Tin tức</a>
+            <ul class="nav flex-column ms-3">
+                <li class="nav-item mb-1">
+                    <a href="{{ route('admin.articles.index') }}" class="nav-link {{ request()->routeIs('admin.articles.index') ? 'active' : '' }}">Danh sách</a>
+                </li>
+                <li class="nav-item mb-1">
+                    <a href="{{ route('admin.articles.create') }}" class="nav-link {{ request()->routeIs('admin.articles.create') ? 'active' : '' }}">Thêm mới</a>
+                </li>
+                <li class="nav-item mb-1">
+                    <a href="{{ route('admin.articles.stats') }}" class="nav-link {{ request()->routeIs('admin.articles.stats') ? 'active' : '' }}">Thống kê</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
     </ul>
     <form method="POST" action="{{ route('logout') }}">
         @csrf

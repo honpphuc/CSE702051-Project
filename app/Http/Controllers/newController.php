@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\User;
+use App\Models\Article;
+use App\Models\Video;
 
 class newController extends Controller
 {
@@ -27,5 +29,17 @@ class newController extends Controller
     }
     public function booking(){
         return view('partials.booking');
+    }
+    public function readMore($id)
+    {
+        $article = Article::findOrFail($id);
+        $article->increment('views');
+        return redirect($article->read_more_link);
+    }
+    public function increaseViews($id)
+    {
+        $article = Article::findOrFail($id);
+        $article->increment('views');
+        return response()->json(['views' => $article->views]);
     }
 }
