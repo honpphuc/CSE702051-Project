@@ -13,7 +13,19 @@ class BookingController extends Controller
     public function showBookingForm()
     {
         $fields = Field::all();
-        return view('components.partials.booking', compact('fields'));
+        // Lấy danh sách đặt sân để hiển thị lịch sử đặt sân
+        $bookings = Booking::all();
+        $bookedTimes = [];
+        foreach ($bookings as $booking) {
+            $bookedTimes[$booking->field_id][$booking->booking_date][] = [
+                'start' => $booking->start_time,
+                'end' => $booking->end_time,
+            ];
+        }
+        return view('components.partials.booking', [
+            'fields' => $fields,
+            'bookedTimes' => $bookedTimes,
+        ]);
     }
 
     // Lưu booking mới từ form đặt sân
