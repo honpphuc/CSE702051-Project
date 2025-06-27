@@ -128,14 +128,16 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     @foreach($videos as $video)
-                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300" data-video-id="{{ $video->id }}">
                         <div class="relative h-48">
                             <img src="{{ $video->thumbnail }}" alt="Video bóng đá" class="w-full h-full object-cover object-top">
-                            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <button type="button"
+                                class="absolute inset-0 flex items-center justify-center w-full h-full focus:outline-none play-video-btn"
+                                data-video-link="{{ $video->link }}">
                                 <div class="w-12 h-12 rounded-full bg-white bg-opacity-80 flex items-center justify-center">
                                     <i class="ri-play-fill ri-xl text-primary"></i>
                                 </div>
-                            </div>
+                            </button>
                             <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
                                 {{ $video->duration }}
                             </div>
@@ -152,13 +154,28 @@
                                 <span class="mx-2">•</span>
                                 <span class="flex items-center">
                                     <i class="ri-eye-line mr-1"></i>
-                                    {{ number_format($video->views) }}
+                                    <span class="video-views-count">{{ number_format($video->views) }}</span>
                                 </span>
                             </div>
+                            @if(auth()->check() && auth()->user()->is_admin)
+                            <div class="mt-2 flex gap-2">
+                                <a href="{{ route('videos.edit', $video->id) }}" class="text-blue-600 hover:underline text-xs">Sửa</a>
+                                <form action="{{ route('videos.destroy', $video->id) }}" method="POST" onsubmit="return confirm('Bạn chắc chắn muốn xoá?')" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-600 hover:underline text-xs">Xoá</button>
+                                </form>
+                            </div>
+                            @endif
                         </div>
                     </div>
                     @endforeach
                 </div>
+                @if(auth()->check() && auth()->user()->is_admin)
+                <div class="mt-4">
+                    <a href="{{ route('videos.create') }}" class="px-4 py-2 bg-primary text-white rounded hover:bg-blue-700">Thêm video mới</a>
+                </div>
+                @endif
             </div>
 
             <!-- Modal popup đọc tiếp -->
@@ -168,8 +185,19 @@
                     <iframe id="readMoreIframe" src="" class="w-full h-[500px] rounded-b-lg" frameborder="0"></iframe>
                 </div>
             </div>
+
+            <!-- Modal xem video -->
+            <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full relative">
+                    <button id="closeVideoModalBtn" class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-2xl">&times;</button>
+                    <div class="aspect-w-16 aspect-h-9">
+                        <iframe id="videoIframe" src="" class="w-full h-96 rounded-b-lg" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
         </main>
         <script src="{{ asset('js/news-popup.js') }}"></script>
+        <script src="{{ asset('js/video-popup.js') }}"></script>
     </body>
 </x-app-layout>
 

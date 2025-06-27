@@ -27,6 +27,9 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item mb-2">
+            <a href="{{ route('admin.videos.index') }}" class="nav-link {{ request()->routeIs('admin.videos.*') ? 'active' : '' }}">Quản lý video</a>
+        </li>
     </ul>
     </ul>
     <form method="POST" action="{{ route('logout') }}">

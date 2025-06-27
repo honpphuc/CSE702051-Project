@@ -80,3 +80,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function() {
     Route::resource('articles', \App\Http\Controllers\Admin\ArticleController::class);
     Route::get('articles-stats', [\App\Http\Controllers\Admin\ArticleController::class, 'stats'])->name('articles.stats');
 });
+
+Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
+    Route::resource('videos', App\Http\Controllers\Admin\VideoController::class, [
+        'as' => 'admin'
+    ]);
+});
+
+Route::post('/videos/{video}/increase-view', [App\Http\Controllers\VideoController::class, 'increaseView'])->name('videos.increaseView');
