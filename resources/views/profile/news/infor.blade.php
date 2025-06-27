@@ -1,6 +1,17 @@
 <x-app-layout>
     <link rel="stylesheet" href="{{ asset('css/contact-info.css') }}">
 
+    @if(session('success'))
+        <script>
+            // Hiển thị toast hoặc alert
+            document.addEventListener('DOMContentLoaded', function() {
+                // Ví dụ dùng alert
+                alert("{{ session('success') }}");
+                // Hoặc custom toast ở đây
+            });
+        </script>
+    @endif
+
     @php
         // Demo dữ liệu liên hệ (thay bằng dữ liệu từ controller khi dùng thực tế)
         $contacts = [
@@ -55,7 +66,7 @@
                 <td>{{ $contact['email'] }}</td>
                 <td>{{ $contact['phone'] }}</td>
                 <td>
-                    <a href="mailto:{{ $contact['email'] }}" class="btn">Email</a>
+                    <button type="button" class="btn open-email-modal" data-email="{{ $contact['email'] }}">Email</button>
                 </td>
             </tr>
             @empty
@@ -65,4 +76,30 @@
             @endforelse
         </tbody>
     </table>
+
+    <!-- Modal gửi email -->
+    <div id="emailModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg max-w-md w-full relative p-6">
+            <button id="closeEmailModalBtn" class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-2xl">&times;</button>
+            <h2 class="text-xl font-bold mb-4">Gửi email</h2>
+            <form id="sendEmailForm" method="POST" action="{{ route('infor.sendEmail') }}">
+                @csrf
+                <div class="mb-3">
+                    <label class="block mb-1">Đến:</label>
+                    <input type="email" id="emailTo" name="to" class="w-full border rounded px-2 py-1" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="block mb-1">Tiêu đề:</label>
+                    <input type="text" name="subject" class="w-full border rounded px-2 py-1" required>
+                </div>
+                <div class="mb-3">
+                    <label class="block mb-1">Nội dung:</label>
+                    <textarea name="body" class="w-full border rounded px-2 py-1" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Gửi</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ asset('js/email-modal.js') }}"></script>
 </x-app-layout>

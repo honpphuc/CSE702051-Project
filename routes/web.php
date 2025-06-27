@@ -88,3 +88,4 @@ Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
 });
 
 Route::post('/videos/{video}/increase-view', [App\Http\Controllers\VideoController::class, 'increaseView'])->name('videos.increaseView');
+Route::post('/infor/send-email', [\App\Http\Controllers\InforController::class, 'sendEmail'])->name('infor.sendEmail');
