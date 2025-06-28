@@ -138,6 +138,7 @@
                                     <label>Ngày đặt sân</label>
                                     <input type="date" name="booking_date" class="w-full border rounded p-2"
                                         x-model="bookingDate"
+                                        min="{{ date('Y-m-d') }}"
                                         @change="selectedSlot = null; calcTotal();" required>
                                 </div>
                                 <!-- Khung giờ đặt sân -->
@@ -176,4 +177,10 @@
             </div>
         </div>
     </main>
+    <script>
+        flatpickr("input[name='booking_date']", {
+            minDate: "{{ date('Y-m-d') }}",
+            dateFormat: "Y-m-d"
+        });
+    </script>
 </x-app-layout>

@@ -62,17 +62,27 @@ class BookingController extends Controller
         }
 
         // 4. Nếu không trùng, lưu booking mới vào database
-        $booking = \App\Models\Booking::create([
-            'field_id' => $request->field_id,               // ID sân
-            'booking_date' => $request->booking_date,       // Ngày đặt
-            'start_time' => $request->start_time,           // Giờ bắt đầu
-            'end_time' => $request->end_time,               // Giờ kết thúc
-            'user_id' => auth()->id(),                      // ID người dùng hiện tại
-            'total_price' => $request->total_price,         // Tổng tiền
-            'status' => 'pending',                          // Trạng thái mặc định
-        ]);
+        $booking = new Booking();
+        $booking->user_id = auth()->id();
+        $booking->field_id = $request->field_id;
+        $booking->booking_date = $request->booking_date;
+        $booking->start_time = $request->start_time;
+        $booking->end_time = $request->end_time;
+        $booking->total_price = $request->total_price;
+        $booking->status = 'pending'; // hoặc 'unpaid'
+        $booking->save();
 
-        // Chuyển sang trang thanh toán
-        return redirect()->route('payment', ['booking' => $booking->id]);
+        return redirect()->route('booking.history')->with('success', 'Đặt sân thành công! Vui lòng thanh toán trong 15 phút.');
+    }
+
+    public function destroy($id)
+    {
+        $booking = \App\Models\Booking::where('user_id', auth()->id())->findOrFail($id);
+        // Chỉ cho phép xóa booking của chính mình
+        if ($booking->status === 'paid') {
+            return back()->with('error', 'Không thể hủy đặt sân đã thanh toán!');
+        }
+        $booking->delete();
+        return back()->with('success', 'Đã hủy đặt sân thành công!');
     }
 }

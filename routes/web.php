@@ -46,7 +46,13 @@ Route::get('/infor', function () {
 })->name('news.infor');
 
 Route::get('/booking/history', function () {
-    $history = Booking::where('user_id', auth()->id())->with('san')->latest()->get();
+    $query = Booking::where('user_id', auth()->id())->with('field')->latest();
+    if (request('status') === 'paid') {
+        $query->where('status', 'paid');
+    } elseif (request('status') === 'unpaid') {
+        $query->where('status', '!=', 'paid');
+    }
+    $history = $query->get();
     return view('booking.history', compact('history'));
 })->middleware('auth')->name('booking.history');
 
@@ -91,3 +97,6 @@ Route::post('/videos/{video}/increase-view', [App\Http\Controllers\VideoControll
 Route::post('/infor/send-email', [\App\Http\Controllers\InforController::class, 'sendEmail'])->name('infor.sendEmail');
 Route::get('/payment/{booking}', [App\Http\Controllers\PaymentController::class, 'index'])->name('payment');
 Route::post('/payment/{booking}/success', [App\Http\Controllers\PaymentController::class, 'success'])->name('payment.success');
+Route::get('/payment/{item}', function ($item) {
+    return view('payment', compact('item'));
+})->name('payment');

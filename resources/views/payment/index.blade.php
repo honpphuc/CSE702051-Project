@@ -50,7 +50,7 @@
     // Đếm ngược 15 phút
     let time = 15 * 60;
     const countdown = document.getElementById('countdown');
-    const timer = setInterval(function() {
+    let timer = setInterval(function() {
         let minutes = Math.floor(time / 60);
         let seconds = time % 60;
         countdown.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
@@ -86,8 +86,16 @@
         .then(data => {
             if (data.success) {
                 document.getElementById('success-msg').classList.remove('hidden');
-                // Ẩn nút thanh toán
                 document.getElementById('btn-paid').style.display = 'none';
+                clearInterval(timer); // Ngưng đếm ngược
+                // Ẩn dòng đếm giờ
+                document.getElementById('countdown').parentElement.style.display = 'none';
+                // Hiện nút về trang chủ
+                let homeBtn = document.createElement('a');
+                homeBtn.href = "{{ route('main') }}";
+                homeBtn.className = "w-full block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded text-center transition mt-4";
+                homeBtn.innerText = "Về trang chủ";
+                document.querySelector('.max-w-xl form').appendChild(homeBtn);
             }
         });
     });
