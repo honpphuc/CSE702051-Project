@@ -62,7 +62,7 @@ class BookingController extends Controller
         }
 
         // 4. Nếu không trùng, lưu booking mới vào database
-        \App\Models\Booking::create([
+        $booking = \App\Models\Booking::create([
             'field_id' => $request->field_id,               // ID sân
             'booking_date' => $request->booking_date,       // Ngày đặt
             'start_time' => $request->start_time,           // Giờ bắt đầu
@@ -72,7 +72,7 @@ class BookingController extends Controller
             'status' => 'pending',                          // Trạng thái mặc định
         ]);
 
-        // 5. Chuyển về trang trước và báo thành công
-        return redirect()->back()->with('success', 'Đặt sân thành công!');
+        // Chuyển sang trang thanh toán
+        return redirect()->route('payment', ['booking' => $booking->id]);
     }
 }

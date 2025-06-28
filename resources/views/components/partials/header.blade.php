@@ -21,7 +21,7 @@
         <nav class="hidden md:flex items-center space-x-8">
           <x-nav-link href="{{ route('main') }}" :active="request()->routeIs('main')" class="text-gray-800 hover:text-primary">Trang chủ</x-nav-link>
           <x-nav-link href="{{ route('components.partials.booking') }}" :active="request()->routeIs('components.partials.booking')" class="text-gray-800 hover:text-primary">Đặt sân</x-nav-link>
-          <x-nav-link href="#" :active="request()->routeIs('about')" class="text-gray-800 hover:text-primary">Giới thiệu</x-nav-link>
+          <x-nav-link href="#" class="text-gray-800 hover:text-primary">Thanh toán</x-nav-link>
           <x-nav-link href="{{ route('profile.news.news') }}" :active="request()->routeIs('profile.news.news')">Tin tức</x-nav-link>
           <x-nav-link href="{{ route('news.infor') }}" :active="request()->routeIs('news.infor')" class="text-gray-800 hover:text-primary">Liên hệ</x-nav-link>
         </nav>
@@ -77,7 +77,7 @@
       <div :class="{ 'block': open, 'hidden': !open }" class="md:hidden mt-3">
         <x-responsive-nav-link href="{{ route('main') }}" :active="request()->routeIs('main')">Trang chủ</x-responsive-nav-link>
         <x-responsive-nav-link href="#" :active="request()->routeIs('booking')">Đặt sân</x-responsive-nav-link>
-        <x-responsive-nav-link href="#" :active="request()->routeIs('about')">Giới thiệu</x-responsive-nav-link>
+        {{-- <x-responsive-nav-link href="{{ route('payment.index') }}" ...>Thanh toán</x-responsive-nav-link> --}}
         <x-responsive-nav-link href="{{ route('profile.news.news') }}" :active="request()->routeIs('profile.news.news')">Tin tức</x-responsive-nav-link>
         <x-responsive-nav-link href="{{ route('news.infor') }}" :active="request()->routeIs('news.infor')">Liên hệ</x-responsive-nav-link>
 

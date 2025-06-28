@@ -19,6 +19,7 @@
                         <th>Ngày</th>
                         <th>Giờ</th>
                         <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
                         <th class="text-center">Hành động</th>
                     </tr>
                 </thead>
@@ -31,6 +32,15 @@
                         <td>{{ $booking->booking_date }}</td>
                         <td>{{ $booking->start_time }} - {{ $booking->end_time }}</td>
                         <td>{{ number_format($booking->total_price) }} đ</td>
+                        <td>
+                            @if($booking->status === 'paid')
+                                <span class="badge bg-success">Đã thanh toán</span>
+                            @elseif($booking->status === 'pending')
+                                <span class="badge bg-warning text-dark">Chờ thanh toán</span>
+                            @elseif($booking->status === 'canceled')
+                                <span class="badge bg-danger">Đã hủy</span>
+                            @endif
+                        </td>
                         <td class="text-center">
                             <a href="{{ route('admin.bookings.edit', $booking->id) }}" class="btn btn-sm btn-warning">Sửa</a>
                             <form action="{{ route('admin.bookings.destroy', $booking->id) }}" method="POST" class="d-inline">

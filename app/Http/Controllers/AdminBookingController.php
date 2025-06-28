@@ -16,7 +16,9 @@ class AdminBookingController extends Controller
      */
     public function index()
     {
-        $bookings = \App\Models\Booking::with('user', 'field')->get();
+        $bookings = \App\Models\Booking::with(['user', 'field'])
+            ->orderByDesc('created_at')
+            ->get();
         return view('admin.bookings.index', compact('bookings'));
     }
 
