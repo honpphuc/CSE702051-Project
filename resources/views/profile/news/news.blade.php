@@ -28,6 +28,21 @@
             <!-- Page Title -->
             <div class="mb-8">
                 <h1 class="text-3xl font-bold text-gray-800 text-center">Tin tức bóng đá</h1>
+
+                <!-- Form tìm kiếm tin tức -->
+                <form method="GET" action="{{ route('profile.news.news') }}" class="flex justify-center my-6">
+                    <input
+                        type="text"
+                        name="search"
+                        value="{{ request('search') }}"
+                        placeholder="Tìm kiếm tin tức..."
+                        class="border rounded-l px-4 py-2 w-72 focus:outline-none"
+                    >
+                    <button type="submit" class="bg-primary text-white px-4 py-2 rounded-r hover:bg-blue-700">
+                        <i class="ri-search-line"></i> Tìm kiếm
+                    </button>
+                </form>
+
                 <p class="text-gray-600 mt-2 text-center">Cập nhật những tin tức mới nhất về bóng đá trong nước và quốc tế
                 </p>
             </div>

@@ -13,8 +13,21 @@ class ArticleController extends Controller
 
 public function index()
 {
+    // Lấy từ khóa tìm kiếm nếu có
+    $search = request('search');
+
     // Lấy tất cả bài viết, sắp xếp theo lượt xem giảm dần
-    $allArticles = Article::orderByDesc('views')->get();
+    $allArticles = Article::orderByDesc('views');
+
+    // Nếu có từ khóa tìm kiếm, lọc theo tiêu đề hoặc mô tả
+    if ($search) {
+        $allArticles = $allArticles->where(function($query) use ($search) {
+            $query->where('title', 'like', "%$search%")
+                  ->orWhere('description', 'like', "%$search%");
+        });
+    }
+
+    $allArticles = $allArticles->get();
 
     // Lấy 2 bài nổi bật nhất
     $featured = $allArticles->take(2);
@@ -38,6 +51,24 @@ public function index()
         'featured' => $featured,
         'articles' => $pagedArticles,
         'videos' => $videos,
+    ]);
+}
+
+public function search(Request $request)
+{
+    $search = $request->input('search');
+    $articles = Article::query();
+
+    if ($search) {
+        $articles->where('title', 'like', "%$search%")
+                 ->orWhere('description', 'like', "%$search%");
+    }
+
+    $articles = $articles->paginate(9);
+
+    return view('profile.news.search_results', [
+        'articles' => $articles,
+        'search' => $search,
     ]);
 }
 
