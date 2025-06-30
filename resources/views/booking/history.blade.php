@@ -95,8 +95,10 @@
                         <td>{{ $item->booking_date ?? '' }}</td>
                         <td>{{ $item->start_time . ' - ' . $item->end_time }}</td>
                         <td>
-                            @if(isset($item->status) && $item->status === 'paid')
+                            @if($item->status === 'paid')
                                 <span class="text-success">Đã thanh toán</span>
+                            @elseif($item->status === 'canceled')
+                                <span style="color: #888; font-weight: bold;">Đã hủy</span>
                             @else
                                 <span class="text-danger">Chưa thanh toán</span>
                                 {{-- Nút Thanh toán --}}

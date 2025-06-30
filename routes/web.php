@@ -50,7 +50,9 @@ Route::get('/booking/history', function () {
     if (request('status') === 'paid') {
         $query->where('status', 'paid');
     } elseif (request('status') === 'unpaid') {
-        $query->where('status', '!=', 'paid');
+        $query->where('status', 'unpaid')->orWhereNull('status');
+    } elseif (request('status') === 'canceled') {
+        $query->where('status', 'canceled');
     }
     $history = $query->get();
     return view('booking.history', compact('history'));
@@ -100,3 +102,9 @@ Route::post('/payment/{booking}/success', [App\Http\Controllers\PaymentControlle
 Route::get('/payment/{item}', function ($item) {
     return view('payment', compact('item'));
 })->name('payment');
+Route::get('/redirect-after-login', function () {
+    if (auth()->user()->role === 'admin') { // hoặc is_admin nếu bạn dùng cột này
+        return redirect()->route('admin.dashboard');
+    }
+    return redirect()->route('main'); // hoặc route trang chủ user
+})->middleware('auth');

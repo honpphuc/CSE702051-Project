@@ -78,11 +78,11 @@ class BookingController extends Controller
     public function destroy($id)
     {
         $booking = \App\Models\Booking::where('user_id', auth()->id())->findOrFail($id);
-        // Chỉ cho phép xóa booking của chính mình
         if ($booking->status === 'paid') {
             return back()->with('error', 'Không thể hủy đặt sân đã thanh toán!');
         }
-        $booking->delete();
+        $booking->status = 'canceled';
+        $booking->save();
         return back()->with('success', 'Đã hủy đặt sân thành công!');
     }
 }
