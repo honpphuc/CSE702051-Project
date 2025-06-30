@@ -48,8 +48,12 @@
 ## 🧩 Cấu trúc chức năng chính
 
 - Đăng ký/Đăng nhập người dùng
-- Trang chủ hiển thị danh sách sân
+- Trang hiển thị danh sách sân
 - Chức năng đặt sân (theo ngày/giờ)
+- Chức năng thanh toán tiền sân
+- Tính năng giữ chỗ trong vòng 15 phút
+- Tính năng tự hủy sân nếu người dùng không thực hiện thanh toán
+- Tính năng đọc và tìm kiếm tin tức
 - Quản lý lịch sử đặt sân
 - Trang quản trị cho admin (CRUD sân, người dùng)
 
